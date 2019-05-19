@@ -4,39 +4,75 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import { createStore } from "redux";
+import store from './redux/store'
 
-const defaultState = {
-  user: "Valentino",
-  products: ['iPhone']
-};
 
-const stateReducer = (state = defaultState, action) => {  // function link le previousState avec une action
-  if (action.type === "CHANGE_NAME") {  // traiter action
-    return {  // new state
-    //   user: action.payload,
-    //   products: state.products
-      ...defaultState,
-      user: action.payload
-    };
-  }
-  return state;
-};
+// import { combineReducers, createStore } from "redux";
+// import { userReducer, productsReducer } from './redux/reducers'
+// import { changeName, addProduct } from './redux/actions'
 
-const changeName = {
-  type: "CHANGE_NAME", // definir action
-  payload: "Matthieu"
-};
+// const defaultState = {
+//   user: "Valentino",
+//   products: ["iPhone"]
+// };
 
-const store = createStore(stateReducer); // initialiser le state
+// const userReducer = (state = defaultState, action) => {  // function link le previousState avec une action
+//   if (action.type === "CHANGE_NAME") {  // traiter action
+//     return {  // new state
+//     //   user: action.payload,
+//     //   products: state.products
+//       ...defaultState,
+//       user: action.payload
+//     };
+//   }
+//   return state;
+// };
 
-console.log(store.getState());
-store.dispatch(changeName); // appeler l'action
-console.log(store.getState());
+// const userReducer = (state = "Valentino", action) => { // function link le previousState avec une action
+//   if (action.type === "CHANGE_NAME") {// traiter action
+//     return action.payload;
+//   }
+//   return state;
+// };
+
+// const productsReducer = (state = [], action) => { 
+//   if(action.type === 'ADD_PRODUCT') {
+//     return [
+//       ...state,
+//       action.payload
+//     ]
+//   }
+//   return state;
+// };
+
+// const addProduct = {  //action
+//   type: 'ADD_PRODUCT',
+//   payload: {
+//     id: Date.now(),
+//     name: 'iMac Pro'
+//   }
+// };
+
+// const allReducers = combineReducers({
+//   user: userReducer,
+//   products: productsReducer
+// });
+
+// const changeName = {
+//   type: "CHANGE_NAME", // definir action
+//   payload: "Matthieu"
+// };
+
+// const store = createStore(allReducers); // initialiser le state
+
+// console.log(store.getState());
+// store.dispatch(changeName); // appeler l'action
+// console.log(store.getState());
+
+// store.dispatch(addProduct);
+// console.log(store.getState());
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();
