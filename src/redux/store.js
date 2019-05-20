@@ -13,7 +13,7 @@ const store = createStore(
 ); // initialiser le state
 
 console.log(store.getState());
-store.dispatch(changeName); // appeler l'action
+store.dispatch(changeName()); // appeler l'action
 console.log(store.getState());
 
 store.dispatch(addProduct);
